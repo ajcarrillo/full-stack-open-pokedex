@@ -1,5 +1,5 @@
 import React from "react"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import { useApi } from "./useApi"
 import LoadingSpinner from "./LoadingSpinner"
 import ErrorMessage from "./ErrorMessage"
@@ -13,7 +13,7 @@ const mapResults = (({ results }) => results.map(({ url, name }) => ({
 })))
 
 const App = () => {
-  const { data: pokemonList, error, isLoading } = useApi("https://pokeapi.co/api/v2/pokemon/?limit=784", mapResults)
+  const { data: pokemonList, error, isLoading } = useApi("https://pokeapi.co/api/v2/pokemon/?limit=16", mapResults)
   if (isLoading) {
     return <LoadingSpinner/>
   }
