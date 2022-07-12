@@ -41,3 +41,14 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
+  health_check:
+    needs: [ simple_deployment_pipeline ]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+      - id: test
+        uses: johnlokerse/website-healthcheck@v2
+        with:
+          web-url: "https://bumpy-death-production.up.railway.app/health"
+          scan-for-text: "ok"
