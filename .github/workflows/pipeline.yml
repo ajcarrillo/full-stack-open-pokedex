@@ -32,6 +32,3 @@ jobs:
         run: railway up
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
-        with:
-          node-version: 16
-          check-latest: false
